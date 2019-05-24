@@ -11,9 +11,9 @@ namespace Model.dao
     {
         SOPDbContext _dbContext = null;
 
-        public MachineDao(SOPDbContext dbContext)
+        public MachineDao()
         {
-            this._dbContext = dbContext;
+            this._dbContext = new SOPDbContext();
         }
         public int Add(Machine entity)
         {
@@ -57,13 +57,17 @@ namespace Model.dao
             }
 
         }
-        //public IEnumerable<Machine> ListAllPaging(string searchString, int page, int pageSize)
-        //{
-        //    return "";
-        //}
         public IEnumerable<Machine> ListAll()
         {
             return _dbContext.Machines.ToList();
+        }
+        public bool CheckUserName(int ID)
+        {
+            return _dbContext.Machines.Count(x => x.ID == ID) > 0;
+        }
+        public Machine GetById(int ID)
+        {
+            return _dbContext.Machines.FirstOrDefault(x => x.ID == ID);
         }
     }
 }

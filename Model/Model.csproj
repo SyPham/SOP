@@ -50,17 +50,31 @@
   <ItemGroup>
     <Compile Include="Abstract\Auditable.cs" />
     <Compile Include="Abstract\IAuditable.cs" />
+    <Compile Include="dao\ComponentCategoryDao.cs" />
+    <Compile Include="dao\ComponentDetailDao.cs" />
+    <Compile Include="dao\TreatmentDao.cs" />
+    <Compile Include="dao\SOPModelDao.cs" />
+    <Compile Include="dao\SOPDao.cs" />
+    <Compile Include="dao\OperationDao.cs" />
     <Compile Include="dao\MachineDao.cs" />
-    <Compile Include="EF\ComponantCategory.cs" />
-    <Compile Include="EF\ComponantDetail.cs" />
+    <Compile Include="EF\ComponentCategory.cs" />
+    <Compile Include="EF\ComponentDetail.cs" />
     <Compile Include="EF\Machine.cs" />
     <Compile Include="EF\SOPModel.cs" />
-    <Compile Include="EF\Process.cs" />
+    <Compile Include="EF\Operation.cs" />
     <Compile Include="EF\SOP.cs" />
     <Compile Include="EF\Treatment.cs" />
     <Compile Include="Migrations\201905160807199_InitialDb.cs" />
     <Compile Include="Migrations\201905160807199_InitialDb.Designer.cs">
       <DependentUpon>201905160807199_InitialDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905240528514_UpdateDB.cs" />
+    <Compile Include="Migrations\201905240528514_UpdateDB.Designer.cs">
+      <DependentUpon>201905240528514_UpdateDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905240648458_UOperation.cs" />
+    <Compile Include="Migrations\201905240648458_UOperation.Designer.cs">
+      <DependentUpon>201905240648458_UOperation.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -74,6 +88,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201905160807199_InitialDb.resx">
       <DependentUpon>201905160807199_InitialDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905240528514_UpdateDB.resx">
+      <DependentUpon>201905240528514_UpdateDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905240648458_UOperation.resx">
+      <DependentUpon>201905240648458_UOperation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

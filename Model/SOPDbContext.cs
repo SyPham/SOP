@@ -16,10 +16,10 @@ namespace Model
             this.Configuration.LazyLoadingEnabled = false;
         }
         public DbSet<Machine> Machines { get; set; }
-        public DbSet<Process> Processs { get; set; }
+        public DbSet<Operation> Operations { get; set; }
         public DbSet<Treatment> Treatments { get; set; }
-        public DbSet<ComponantCategory> ComponantCategorys { get; set; }
-        public DbSet<ComponantDetail> ComponantDetails { get; set; }
+        public DbSet<ComponentCategory> ComponantCategorys { get; set; }
+        public DbSet<ComponentDetail> ComponantDetails { get; set; }
         public DbSet<EF.SOPModel> SOPModels { get; set; }
         public DbSet<SOP> SOPs { get; set; }
         protected override void OnModelCreating(DbModelBuilder builder)
