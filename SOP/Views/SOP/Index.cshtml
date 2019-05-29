@@ -1,9 +1,7 @@
 ﻿
 @{
-                /**/
-
-                ViewBag.Title = "Index";
-                Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="box box-primary">
     <div class="box-header with-border">
@@ -20,56 +18,27 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Operation</label>
-                    <select id="Operation" class="form-control " style="width: 100%;" tabindex="-1" aria-hidden="true">
-                        <option selected="selected" value="cutting">cutting</option>
-                        <option value="stitching">stitching</option>
-                        <option value="assembly">assembly</option>
-                        
-                    </select>
+                    <select id="Operation" class="form-control select2 select" style="width: 100%;" tabindex="-1" aria-hidden="true"></select>
 
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Model</label>
-                    <select id="Model" class="form-control " style="width: 100%;" tabindex="-1" aria-hidden="true">
-                        <option value="E1">EG211</option>
-                        <option value="E2">EG212</option>
-                        <option selected="selected" value="E3">EG213</option>
-                        <option value="E4">EG214</option>
-                        <option value="E5">EG215</option>
-                        <option value="E6">EG216</option>
-                        <option value="E7">EG217</option>
-                    </select>
+                    <select id="Model" class="form-control select2 select" style="width: 100%;" tabindex="-1" aria-hidden="true"></select>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Machine</label>
-                    <select id="Machine" class="form-control " style="width: 100%;" tabindex="-1" aria-hidden="true">
-                        <option value="M1">M1</option>
-                        <option selected="selected" value="M2">M2</option>
-                        <option value="M3">M3</option>
-                        <option value="M4">M4</option>
-                        <option value="M5">M5</option>
-                        <option value="M6">M6</option>
-                        <option value="M7">M7</option>
-                    </select>
+                    <select id="Machine" class="form-control select2 select" style="width: 100%;" tabindex="-1" aria-hidden="true"></select>
                 </div>
 
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Treatment</label>
-                    <select id="Treatment" class="form-control " style="width: 100%;" tabindex="-1" aria-hidden="true">
-                        <option value="T1">T1</option>
-                        <option selected="selected" value="T2">T2</option>
-                        <option value="T3">T3</option>
-                        <option value="T4">T4</option>
-                        <option value="T5">T5</option>
-                        <option value="T6">T6</option>
-                        <option value="T7">T7</option>
-                    </select>
+                    <select id="Treatment" class="form-control select2 select" style="width: 100%;" tabindex="-1" aria-hidden="true"></select>
 
                 </div>
 
@@ -78,34 +47,40 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Component Category</label>
-                    <select id="ComponentCategory" class="form-control " style="width: 100%;" tabindex="-1" aria-hidden="true">
-                        <option value="CC1">CC1</option>
-                        <option selected="selected" value="CC2">CC2</option>
-                        <option value="CC3">CC3</option>
-                        <option value="CC4">CC4</option>
-                        <option value="CC5">CC5</option>
-                        <option value="CC6">CC6</option>
-                        <option value="CC7">CC7</option>
-                    </select>
+                    <select id="ComponentCategory" class="form-control select2 select" style="width: 100%;" tabindex="-1" aria-hidden="true"></select>
                 </div>
 
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Component Detail</label>
-                    <select id="ComponentDetail" class="form-control " style="width: 100%;" tabindex="-1" aria-hidden="true">
-                        <option value="CD1">CD1</option>
-                        <option selected="selected" value="CD2">CD2</option>
-                        <option value="CD3">CD3</option>
-                        <option value="CD4">CD4</option>
-                        <option value="CD5">CD5</option>
-                        <option value="CD6">CD6</option>
-                        <option value="CD7">CD7</option>
-                    </select>
+                    <select id="ComponentDetail" class="form-control select2 select" style="width: 100%;" tabindex="-1" aria-hidden="true"></select>
                 </div>
 
             </div>
             <!-- /.row -->
+        </div>
+
+    </div>
+</div>
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title">Search</h3>
+
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+        </div>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Search Code SOP</label>
+                    <select id="SearchSOP" class="form-control select2" style="width: 100%;" tabindex="-1" aria-hidden="true"></select>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -120,7 +95,7 @@
         <div class="box-body">
             <div class="form-group">
                 <label for="Code">Code</label>
-                <input type="text" class="form-control" disabled id="Code" placeholder="Enter Code">
+                <input type="text" class="form-control sop-code" id="Code" placeholder="Enter Code">
             </div>
             <div class="form-group">
                 <label for="Name">Name</label>
@@ -130,7 +105,7 @@
         <!-- /.box-body -->
 
         <div class="box-footer">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button class="btn btn-primary" onclick="return Add();">Submit</button>
         </div>
     </form>
 </div>
@@ -138,56 +113,91 @@
 @section scripts{
     <script>
         $(function () {
-            code();
+            LoadData();
+            var valOld = "";
+            $(".select").change(function () {
+                valOld += $(this).val();
+                $('.sop-code').val(valOld);
+                console.log(valOld);
+            });
         });
 
-        function code() {
-            var code = "";
-     
-             $('#Opetation :selected').click(function () {
-                 var op = $('#Opetation :selected').val();
-               code += op;
-             });
-             $('#Model :selected').click(function () {
-                 var md = $('#Model :selected').val();
-               code += md;
-             });
-             $('#Machine :selected').click(function () {
-                 var mc = $('#Machine :selected').val();
-               code += mc;
-             });
-             $('#Treatment :selected').click(function () {
-                 var tt = $('#Treatment :selected').val();
-                code += tt;
-             });
-             $('#ComponentCategory :selected').click(function () {
-                 var cc = $('#ComponentCategory :selected').val();
-                code += cc;
-             });
-             $('#ComponentDetail :selected').click(function () {
-                 var cd = $('#ComponentDetail :selected').val();
-                code += cd;
+
+        //LoadData
+        function LoadData() {
+            //Load ComponentCategories
+                $("#ComponentCategory").append('<option value="" >Choose Component Categories</option>');
+            //load ComponentDetails
+                $("#ComponentDetail").append('<option value="" >Choose Component Details</option>');
+            //load Operations
+                $("#Operation").append('<option value="" >Choose Operation</option>');
+            //load SOPModels
+                $("#Model").append('<option value="" >Choose Model</option>');
+            //load Machines
+                $("#Machine").append('<option value="" >Choose Machine</option>');
+            //load Treatments
+                $("#Treatment").append('<option value="" >Choose Treatment</option>');
+            //load SOPs
+                $("#SearchSOP").append('<option value="" >Search SOP here ...</option>');
+            $.ajax({
+                url: '/SOP/GetMultipleData/',
+                dataType: "json",
+                type: "GET",
+                contentType: 'application/json; charset=utf-8',
+                async: true,
+                processData: false,
+                cache: false,
+                success: function (data) {
+                    console.log(data.ComponentCategories);
+                    console.log(data.ComponentDetails);
+                    console.log(data.Operations);
+                    console.log(data.SOPModels);
+                    console.log(data.Machines);
+                    console.log(data.Treatments);
+                    console.log(data.SOPs);
+                    //Load ComponentCategories
+                    $.each(data.ComponentCategories, function (i, obj) {
+                        $("#ComponentCategory").append('<option value="' + obj.Code + '" >' + obj.Code + '</option>');
+                    });
+                    //load ComponentDetails
+                    $.each(data.ComponentDetails, function (i, obj) {
+                        $("#ComponentDetail").append('<option value="' + obj.Code + '" >' + obj.Code + '</option>');
+                    });
+                    //load Operations
+                    $.each(data.Operations, function (i, obj) {
+                        $("#Operation").append('<option value="' + obj.Code + '" >' + obj.Code + '</option>');
+                    });
+                    //load SOPModels
+                    $.each(data.SOPModels, function (i, obj) {
+                        $("#Model").append('<option value="' + obj.Code + '" >' + obj.Code + '</option>');
+                    });
+                    //load Machines
+                    $.each(data.Machines, function (i, obj) {
+                        $("#Machine").append('<option value="' + obj.Code + '" >' + obj.Code + '</option>');
+                    });
+                    //load Treatments
+                    $.each(data.Treatments, function (i, obj) {
+                        $("#Treatment").append('<option value="' + obj.Code + '" >' + obj.Code + '</option>');
+                    });
+                    //load SOPs
+                    $.each(data.SOPs, function (i, obj) {
+                        $("#SearchSOP").append('<option value="' + obj.Code + '" >' + obj.Code + '</option>');
+                    });
+                },
+                error: function (xhr) {
+                    console.log(xhr);
+                }
             });
-            $('#Code').val(code);
         }
+
         //Add Data Function
         function Add() {
             var res = validate();
             if (res == false) {
                 return false;
             }
-            
-            var op = $('#Opetation :selected').val();
-            var md = $('#Model :selected').val();
-             var mc = $('#Machine :selected').val();
-            var tt = $('#Treatment :selected').val();
-             var cc = $('#ComponentCategory :selected').val();
-            var cd = $('#ComponentDetail :selected').val();
-
-            var Code = op + md + mc + tt + cc + cd;
-
             var mObj = {
-                Code: Code,
+                Code: $('.sop-code').val(),
                 Name: $('#Name').val()
 
             };
@@ -198,14 +208,8 @@
                 contentType: "application/json;charset=utf-8",
                 dataType: "json",
                 success: function (result) {
-                    //loadData();
-                    if (result) {
-                        alert("Successed!!")
-                    }
-                    else {
-                          alert("Failed!")
-                    }
-
+                    LoadData();
+                    alert("successed!");
                 },
                 error: function (errormessage) {
                     alert(errormessage.responseText);
@@ -218,7 +222,6 @@
             $('#Name').css('border-color', 'lightgrey');
             $('#Code').css('border-color', 'lightgrey');
         }
-        //Valdidation using jquery
         function validate() {
             var isValid = true;
             if ($('#Name').val().trim() == "") {

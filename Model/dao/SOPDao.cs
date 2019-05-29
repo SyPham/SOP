@@ -1,4 +1,5 @@
 ﻿using Model.EF;
+using Model.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,6 +61,27 @@ namespace Model.dao
         public IEnumerable<SOP> ListAll()
         {
             return _dbContext.SOPs.ToList();
+        }
+
+        public MuitipleDataViewModel MultipleData()
+        {
+            var cCategory = _dbContext.ComponantCategorys.ToList();
+            var cDetail = _dbContext.ComponantDetails.ToList();
+            var operation = _dbContext.Operations.ToList();
+            var modelSOP = _dbContext.SOPModels.ToList();
+            var machine = _dbContext.Machines.ToList();
+            var treatment = _dbContext.Treatments.ToList();
+            var sop = _dbContext.SOPs.ToList();
+            MuitipleDataViewModel listMulti = new MuitipleDataViewModel();
+            listMulti.ComponentCategories = cCategory;
+            listMulti.ComponentDetails = cDetail;
+            listMulti.Operations = operation;
+            listMulti.SOPModels = modelSOP;
+            listMulti.Machines = machine;
+            listMulti.Treatments = treatment;
+            listMulti.SOPs = sop;
+            return listMulti;
+
         }
     }
 }
