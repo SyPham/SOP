@@ -39,10 +39,6 @@ namespace Model.dao
             }
 
         }
-        public SOP GetById()
-        {
-            return _dbContext.SOPs.SingleOrDefault();
-        }
         public bool Delete(int id)
         {
             try
@@ -57,10 +53,6 @@ namespace Model.dao
                 return false;
             }
 
-        }
-        public IEnumerable<SOP> ListAll()
-        {
-            return _dbContext.SOPs.ToList();
         }
 
         public MuitipleDataViewModel MultipleData()
