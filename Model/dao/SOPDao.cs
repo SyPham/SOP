@@ -54,7 +54,10 @@ namespace Model.dao
             }
 
         }
-
+        public IEnumerable<SOP> GetAll()
+        {
+                return _dbContext.SOPs.ToList();
+        }
         public MuitipleDataViewModel MultipleData()
         {
             var cCategory = _dbContext.ComponantCategorys.ToList();

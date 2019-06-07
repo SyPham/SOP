@@ -11,7 +11,7 @@ namespace Model.dao
     {
         SOPDbContext _dbContext = null;
 
-        public TreatmentDao(SOPDbContext dbContext)
+        public TreatmentDao()
         {
             this._dbContext = new SOPDbContext();
         }
