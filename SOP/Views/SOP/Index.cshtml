@@ -5,140 +5,374 @@
 }
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title">Chose code</h3>
+        <h3 class="box-title">Set Operation parameters</h3>
 
-        <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
-        </div>
+        @*<div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+            </div>*@
     </div>
     <!-- /.box-header -->
     <div class="box-body">
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
-                    <label>Operation</label>
-                    <select id="Operation" class="form-control select2 select" style="width: 100%;" tabindex="-1" aria-hidden="true"></select>
+                    <label>Process</label>
+                    <div class="input-group">
+                        <select id="Operation" class="form-control select2 select" style="width: 100%;" tabindex="-1" aria-hidden="true"></select>
 
+                        <div class="input-group-addon btn btn-success" data-toggle="modal" data-target="#modal-process">
+                            <i class="fa fa-plus-circle"></i>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label>Model</label>
-                    <select id="Model" class="form-control select2 select" style="width: 100%;" tabindex="-1" aria-hidden="true"></select>
-                </div>
+
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Machine</label>
-                    <select id="Machine" class="form-control select2 select" style="width: 100%;" tabindex="-1" aria-hidden="true"></select>
+                    <div class="input-group">
+                        <select id="Machine" class="form-control select2 select" style="width: 100%;" tabindex="-1" aria-hidden="true"></select>
+                        <div class="input-group-addon btn btn-success" data-toggle="modal" data-target="#modal-machine">
+                            <i class="fa fa-plus-circle"></i>
+                        </div>
+                    </div>
                 </div>
 
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Treatment</label>
-                    <select id="Treatment" class="form-control select2 select" style="width: 100%;" tabindex="-1" aria-hidden="true"></select>
-
+                    <div class="input-group">
+                        <select id="Treatment" class="form-control select2 select" style="width: 100%;" tabindex="-1" aria-hidden="true"></select>
+                        <div class="input-group-addon btn btn-success" data-toggle="modal" data-target="#modal-treatment">
+                            <i class="fa fa-plus-circle"></i>
+                        </div>
+                    </div>
                 </div>
-
             </div>
 
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Component Category</label>
-                    <select id="ComponentCategory" class="form-control select2 select" style="width: 100%;" tabindex="-1" aria-hidden="true"></select>
+                    <div class="input-group">
+                        <select id="ComponentCategory" class="form-control select2 select" style="width: 100%;" tabindex="-1" aria-hidden="true"></select>
+                        <div class="input-group-addon btn btn-success" data-toggle="modal" data-target="#modal-category">
+                            <i class="fa fa-plus-circle"></i>
+                        </div>
+                    </div>
                 </div>
 
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Component Detail</label>
-                    <select id="ComponentDetail" class="form-control select2 select" style="width: 100%;" tabindex="-1" aria-hidden="true"></select>
+                    <div class="input-group">
+                        <select id="ComponentDetail" class="form-control select2 select" style="width: 100%;" tabindex="-1" aria-hidden="true"></select>
+                        <div class="input-group-addon btn btn-success" data-toggle="modal" data-target="#modal-detail">
+                            <i class="fa fa-plus-circle"></i>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.row -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">SOP</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form" id="SOP">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="Name">Name</label>
+                        <div class="input-group">
+                            <div style="cursor:pointer" onclick="getTextName()" class="input-group-addon  btn btn-success">
+                                <i class="fa fa-copy"></i> Copy
+                            </div>
+                            <input type="text" class="form-control sop-name" id="Name" placeholder="Enter name">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="Code">Code</label>
+                        <div class="input-group">
+                            <div style="cursor:pointer" onclick="getTextCode()" class="input-group-addon  btn btn-success">
+                                <i class="fa fa-copy"></i> Copy
+                            </div>
+                            <input type="text" class="form-control sop-code" id="Code" placeholder="Enter Code">
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+
+                <div class="box-footer">
+                    <button onclick="clearForm();" class="btn btn-warning pull-right"> <i class="fa fa-remove"></i>Clear text</button>
+                    <button class="btn btn-primary pull-left" onclick="return Add();">Submit</button>
                 </div>
 
+            </form>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Get Operation Information</h3>
+
+                @*<div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                    </div>*@
             </div>
-            <!-- /.row -->
-        </div>
-
-    </div>
-</div>
-<div class="box box-primary">
-    <div class="box-header with-border">
-        <h3 class="box-title">Search</h3>
-
-        <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
-        </div>
-    </div>
-    <!-- /.box-header -->
-    <div class="box-body">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label>Search Code SOP</label>
-                    <select id="SearchSOP" class="form-control select2" style="width: 100%;" tabindex="-1" aria-hidden="true"></select>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Search Name SOP</label>
+                            <div class="input-group">
+                                <div style="cursor:pointer" onclick="copyToClipboardText('.search-name-sop:selected')" class="input-group-addon  btn btn-success">
+                                    <i class="fa fa-copy"></i> Copy
+                                </div>
+                                <select id="SearchSOPName" class="form-control select2" style="width: 100%;" tabindex="-1" aria-hidden="true"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Search Code SOP</label>
+                            <div class="input-group">
+                                <div style="cursor:pointer" onclick="copyToClipboard('.search-code-sop:selected')" class="input-group-addon btn btn-success">
+                                    <i class="fa fa-copy"></i> Copy
+                                </div>
+                                <select id="SearchSOP" class="form-control select2" style="width: 100%;" tabindex="-1" aria-hidden="true"></select>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
-</div>
-<div class="box box-primary">
-    <div class="box-header with-border">
-        <h3 class="box-title">SOP</h3>
-    </div>
-    <!-- /.box-header -->
-    <!-- form start -->
-    <form role="form">
-        <div class="box-body">
-            <div class="form-group">
-                <label for="Code">Code</label>
-                <input type="text" class="form-control sop-code" id="Code" placeholder="Enter Code">
-            </div>
-            <div class="form-group">
-                <label for="Name">Name</label>
-                <input type="text" class="form-control" id="Name" placeholder="Enter name">
-            </div>
-        </div>
-        <!-- /.box-body -->
 
-        <div class="box-footer">
-            <button class="btn btn-primary" onclick="return Add();">Submit</button>
-        </div>
-    </form>
 </div>
 
+
+<div class="modal fade" id="modal-process" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title">Create Process</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" id="process">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="Code">Code</label>
+                            <input type="text" class="form-control Code" id="Code" placeholder="Enter Code">
+                        </div>
+                        <div class="form-group">
+                            <label for="Name">Name</label>
+                            <input type="text" class="form-control Name" id="Name" placeholder="Enter name">
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+
+                    <div class="box-footer">
+                        <button onclick="return AddProcess();" class="btn btn-success"> <i class="fa fa-plus"></i>  Create</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="modal-machine" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title">Create Machine</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" id="machine">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="Code">Code</label>
+                            <input type="text" class="form-control Code" id="Code" placeholder="Enter Code">
+                        </div>
+                        <div class="form-group">
+                            <label for="Name">Name</label>
+                            <input type="text" class="form-control Name" id="Name" placeholder="Enter name">
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+
+                    <div class="box-footer">
+                        <button onclick="return AddMachine();" class="btn btn-success"> <i class="fa fa-plus"></i> Create</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="modal-treatment" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title">Create Treatment</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" id="treatment">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="Code">Code</label>
+                            <input type="text" class="form-control Code" id="Code" placeholder="Enter Code">
+                        </div>
+                        <div class="form-group">
+                            <label for="Name">Name</label>
+                            <input type="text" class="form-control Name" id="Name" placeholder="Enter name">
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+
+                    <div class="box-footer">
+                        <button onclick="return AddTreatment();" class="btn btn-success"> <i class="fa fa-plus"></i>Create</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="modal-category" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title">Create Component Category</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" id="category">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="Code">Code</label>
+                            <input type="text" class="form-control Code" id="Code" placeholder="Enter Code">
+                        </div>
+                        <div class="form-group">
+                            <label for="Name">Name</label>
+                            <input type="text" class="form-control Name" id="Name" placeholder="Enter name">
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+
+                    <div class="box-footer">
+                        <button onclick="return AddCategory();" class="btn btn-success"> <i class="fa fa-plus"></i>Create</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="modal-detail" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title">Create Component Detail</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" id="detail">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="Code">Code</label>
+                            <input type="text" class="form-control Code" id="Code" placeholder="Enter Code">
+                        </div>
+                        <div class="form-group">
+                            <label for="Name">Name</label>
+                            <input type="text" class="form-control Name" id="Name" placeholder="Enter name">
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+
+                    <div class="box-footer">
+                        <button onclick="return AddDetail();" class="btn btn-success"> <i class="fa fa-plus"></i>Create</button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
 @section scripts{
     <script>
         $(function () {
             LoadData();
-            var valOld = "";
+            var valOldCode = "";
+            var valOldName = "";
             $(".select").change(function () {
-                valOld += $(this).val();
-                $('.sop-code').val(valOld);
-                console.log(valOld);
+                var code = $('.sop-code').val();
+                if (code.indexOf($(this).val()) == -1) {
+                    let isCharCode = valOldCode == "" ? "" : '-';
+                    valOldCode += isCharCode + $(this).val();
+                    $('.sop-code').val(valOldCode);
+
+                    let isCharName = valOldName == "" ? "" : ' - ';
+                    valOldName += isCharName + $(this).find("option:selected").text();
+                    $('.sop-name').val(valOldName);
+
+                }
             });
         });
-
 
         //LoadData
         function LoadData() {
             //Load ComponentCategories
-                $("#ComponentCategory").append('<option value="" >Choose Component Categories</option>');
+            $("#ComponentCategory").append('<option value="" >Choose Component Categories</option>');
             //load ComponentDetails
-                $("#ComponentDetail").append('<option value="" >Choose Component Details</option>');
+            $("#ComponentDetail").append('<option value="" >Choose Component Details</option>');
             //load Operations
-                $("#Operation").append('<option value="" >Choose Operation</option>');
+            $("#Operation").append('<option value="" >Choose Operation</option>');
             //load SOPModels
-                $("#Model").append('<option value="" >Choose Model</option>');
+            $("#Model").append('<option value="" >Choose Model</option>');
             //load Machines
-                $("#Machine").append('<option value="" >Choose Machine</option>');
+            $("#Machine").append('<option value="" >Choose Machine</option>');
             //load Treatments
-                $("#Treatment").append('<option value="" >Choose Treatment</option>');
+            $("#Treatment").append('<option value="" >Choose Treatment</option>');
             //load SOPs
-                $("#SearchSOP").append('<option value="" >Search SOP here ...</option>');
+            $("#SearchSOP").append('<option value="" >Search Code SOP here ...</option>');
+            //load SOPs
+            $("#SearchSOPName").append('<option value="" >Search Name SOP here ...</option>');
             $.ajax({
                 url: '/SOP/GetMultipleData/',
                 dataType: "json",
@@ -157,31 +391,37 @@
                     console.log(data.SOPs);
                     //Load ComponentCategories
                     $.each(data.ComponentCategories, function (i, obj) {
-                        $("#ComponentCategory").append('<option value="' + obj.Code + '" >' + obj.Code + '</option>');
+                        $("#ComponentCategory").append('<option value="' + obj.Code + '" >' + obj.Name + '</option>');
                     });
                     //load ComponentDetails
                     $.each(data.ComponentDetails, function (i, obj) {
-                        $("#ComponentDetail").append('<option value="' + obj.Code + '" >' + obj.Code + '</option>');
+                        $("#ComponentDetail").append('<option value="' + obj.Code + '" >' + obj.Name + '</option>');
                     });
                     //load Operations
                     $.each(data.Operations, function (i, obj) {
-                        $("#Operation").append('<option value="' + obj.Code + '" >' + obj.Code + '</option>');
+                        $("#Operation").append('<option value="' + obj.Code + '" >' + obj.Name + '</option>');
                     });
                     //load SOPModels
                     $.each(data.SOPModels, function (i, obj) {
-                        $("#Model").append('<option value="' + obj.Code + '" >' + obj.Code + '</option>');
+                        $("#Model").append('<option value="' + obj.Code + '" >' + obj.Name + '</option>');
                     });
                     //load Machines
                     $.each(data.Machines, function (i, obj) {
-                        $("#Machine").append('<option value="' + obj.Code + '" >' + obj.Code + '</option>');
+                        $("#Machine").append('<option value="' + obj.Code + '" >' + obj.Name + '</option>');
                     });
                     //load Treatments
                     $.each(data.Treatments, function (i, obj) {
-                        $("#Treatment").append('<option value="' + obj.Code + '" >' + obj.Code + '</option>');
+                        $("#Treatment").append('<option value="' + obj.Code + '" >' + obj.Name + '</option>');
                     });
                     //load SOPs
                     $.each(data.SOPs, function (i, obj) {
-                        $("#SearchSOP").append('<option value="' + obj.Code + '" >' + obj.Code + '</option>');
+                        $("#SearchSOP").append('<option class="search-code-sop" value="' + obj.Code + '" >' + obj.Code + '</option>');
+                        CopySOP();
+                    });
+                    //load SOPs
+                    $.each(data.SOPs, function (i, obj) {
+                        $("#SearchSOPName").append('<option class="search-name-sop" value="' + obj.Name + '" >' + obj.Name + '</option>');
+                        CopySOP();
                     });
                 },
                 error: function (xhr) {
@@ -208,15 +448,16 @@
                 contentType: "application/json;charset=utf-8",
                 dataType: "json",
                 success: function (result) {
-                    LoadData();
+
                     alert("successed!");
+                    LoadData();
                 },
                 error: function (errormessage) {
                     alert(errormessage.responseText);
                 }
             });
         }
-        function clearTextBox() {
+        function clearForm() {
             $('#Name').val("");
             $('#Code').val("");
             $('#Name').css('border-color', 'lightgrey');
@@ -224,22 +465,295 @@
         }
         function validate() {
             var isValid = true;
-            if ($('#Name').val().trim() == "") {
+            if ($('#SOP #Name').val().trim() == "") {
                 $('#Name').css('border-color', 'Red');
                 isValid = false;
             }
             else {
-                $('#Name').css('border-color', 'lightgrey');
+                $('#SOP #Name').css('border-color', 'lightgrey');
             }
-            if ($('#Code').val().trim() == "") {
+            if ($('#SOP #Code').val().trim() == "") {
                 $('#Code').css('border-color', 'Red');
                 isValid = false;
             }
             else {
-                $('#Code').css('border-color', 'lightgrey');
+                $('#SOP #Code').css('border-color', 'lightgrey');
             }
 
             return isValid;
+        }
+        function validateProcess() {
+            var isValid = true;
+            if ($('#process .Name').val().trim() == "") {
+                $('#process .Name').css('border-color', 'Red');
+                isValid = false;
+            }
+            else {
+                $('#process .Name').css('border-color', 'lightgrey');
+            }
+            if ($('#process .Code').val().trim() == "") {
+                $('#process .Code').css('border-color', 'Red');
+                isValid = false;
+            }
+            else {
+                $('#process .Code').css('border-color', 'lightgrey');
+            }
+
+            return isValid;
+        }
+        function validateMachine() {
+            var isValid = true;
+            if ($('#machine .Name').val().trim() == "") {
+                $('#machine .Name').css('border-color', 'Red');
+                isValid = false;
+            }
+            else {
+                $('#machine .Name').css('border-color', 'lightgrey');
+            }
+            if ($('#machine .Code').val().trim() == "") {
+                $('#machine .Code').css('border-color', 'Red');
+                isValid = false;
+            }
+            else {
+                $('#machine .Code').css('border-color', 'lightgrey');
+            }
+
+            return isValid;
+        }
+        function validateTreatment() {
+            var isValid = true;
+            if ($('#treatment .Name').val().trim() == "") {
+                $('#treatment .Name').css('border-color', 'Red');
+                isValid = false;
+            }
+            else {
+                $('#treatment .Name').css('border-color', 'lightgrey');
+            }
+            if ($('#treatment .Code').val().trim() == "") {
+                $('#treatment .Code').css('border-color', 'Red');
+                isValid = false;
+            }
+            else {
+                $('#treatment .Code').css('border-color', 'lightgrey');
+            }
+
+            return isValid;
+        }
+        function validateCategory() {
+            var isValid = true;
+            if ($('#category .Name').val().trim() == "") {
+                $('#category .Name').css('border-color', 'Red');
+                isValid = false;
+            }
+            else {
+                $('#category .Name').css('border-color', 'lightgrey');
+            }
+            if ($('#category .Code').val().trim() == "") {
+                $('#category .Code').css('border-color', 'Red');
+                isValid = false;
+            }
+            else {
+                $('#category .Code').css('border-color', 'lightgrey');
+            }
+
+            return isValid;
+        }
+        function validateDetail() {
+            var isValid = true;
+            if ($('#detail .Name').val().trim() == "") {
+                $('#detail .Name').css('border-color', 'Red');
+                isValid = false;
+            }
+            else {
+                $('#detail .Name').css('border-color', 'lightgrey');
+            }
+            if ($('#detail .Code').val().trim() == "") {
+                $('#detail .Code').css('border-color', 'Red');
+                isValid = false;
+            }
+            else {
+                $('#detail .Code').css('border-color', 'lightgrey');
+            }
+
+            return isValid;
+        }
+        function CopySOP() {
+            $('#SearchSOP').on('change', function (e) {
+                //var value =$("#SearchSOP option:selected").val();
+                copyToClipboard('#SearchSOP option:selected');
+            });
+        }
+        function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(element).val()).select();
+            document.execCommand("copy");
+            $temp.remove();
+        }
+        function getTextName() {
+            var copyText = document.getElementById("Name");
+            copyText.select();
+            document.execCommand("copy");
+        }
+        function getTextCode() {
+            var copyText = document.getElementById("Code");
+            copyText.select();
+            document.execCommand("copy");
+        }
+        //Add Data Function
+        function AddProcess() {
+            var res = validateProcess();
+            if (res == false) {
+                return false;
+            }
+            var mObj = {
+                Code: $('#process .Code').val(),
+                Name: $('#process .Name').val()
+
+            };
+            $.ajax({
+                url: "/SOP/AddProcess",
+                data: JSON.stringify(mObj),
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    //loadData();
+                    if (result) {
+                        alert("Successed!!")
+                    }
+                    else {
+                        alert("Failed!")
+                    }
+
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
+        }
+        function AddMachine() {
+            var res = validateMachine();
+            if (res == false) {
+                return false;
+            }
+            var mObj = {
+                Code: $('#machine .Code').val(),
+                Name: $('#machine .Name').val()
+
+            };
+            $.ajax({
+                url: "/SOP/AddMachine",
+                data: JSON.stringify(mObj),
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    //loadData();
+                    if (result) {
+                        alert("Successed!!")
+                    }
+                    else {
+                        alert("Failed!")
+                    }
+
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
+        }
+        function AddTreatment() {
+            var res = validateTreatment();
+            if (res == false) {
+                return false;
+            }
+            var mObj = {
+                Code: $('#treatment .Code').val(),
+                Name: $('#treatment .Name').val()
+            };
+            $.ajax({
+                url: "/SOP/AddTreatment",
+                data: JSON.stringify(mObj),
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    //loadData();
+                    if (result) {
+                        alert("Successed!!")
+                    }
+                    else {
+                        alert("Failed!")
+                    }
+
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
+        }
+        function AddCategory() {
+            var res = validateCategory();
+            if (res == false) {
+                return false;
+            }
+            var mObj = {
+                Code: $('#category .Code').val(),
+                Name: $('#category .Name').val()
+
+            };
+            $.ajax({
+                url: "/SOP/AddCategory",
+                data: JSON.stringify(mObj),
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    //loadData();
+                    if (result) {
+                        alert("Successed!!")
+                    }
+                    else {
+                        alert("Failed!")
+                    }
+
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
+        }
+        function AddDetail() {
+            var res = validateDetail();
+            if (res == false) {
+                return false;
+            }
+            var mObj = {
+                Code: $('#detail .Code').val(),
+                Name: $('#detail .Name').val()
+
+            };
+            $.ajax({
+                url: "/SOP/AddDetail",
+                data: JSON.stringify(mObj),
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    //loadData();
+                    if (result) {
+                        alert("Successed!!")
+                    }
+                    else {
+                        alert("Failed!")
+                    }
+
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
         }
     </script>
 }
