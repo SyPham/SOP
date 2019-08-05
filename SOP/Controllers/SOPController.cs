@@ -59,5 +59,9 @@ namespace SOP.Controllers
         {
             return Json(new SOPDao().GetAll(), JsonRequestBehavior.AllowGet);
         }
+        public ActionResult Search(string name)
+        {
+            return Json(new SOPDao().SearchName(name), JsonRequestBehavior.AllowGet);
+        }
     }
 }

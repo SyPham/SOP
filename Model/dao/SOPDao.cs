@@ -78,5 +78,17 @@ namespace Model.dao
             return listMulti;
 
         }
+
+        public bool SearchName(string name)
+        {
+            
+            if (!String.IsNullOrEmpty(name))
+            {
+                var SearchName = _dbContext.Operations.Where(s => s.Name == name);
+                if (SearchName == null)
+                    return false;
+            }
+            return true;
+        }
     }
 }

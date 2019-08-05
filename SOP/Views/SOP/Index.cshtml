@@ -95,20 +95,20 @@
                     <div class="form-group">
                         <label for="Name">Name</label>
                         <div class="input-group">
-                            <div style="cursor:pointer" onclick="getTextName()" class="input-group-addon  btn btn-danger">
+                            <div style="cursor:pointer" onclick="copyTextInputToClipboard()" class="input-group-addon  btn btn-danger">
                                 <i class="fa fa-copy"></i> Copy
                             </div>
-                            <input type="text" class="form-control sop-name" id="Name" placeholder="Enter name">
+                            <input type="text" class="form-control sop-name" onkeyup="onChangeInput()" id="Name" placeholder="Enter name">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="Code">Code</label>
                         <div class="input-group">
-                            <div style="cursor:pointer" onclick="getTextCode()" class="input-group-addon  btn btn-danger">
+                            <div style="cursor:pointer" onclick="copyValueInputToClipboard()" class="input-group-addon  btn btn-danger">
                                 <i class="fa fa-copy"></i> Copy
                             </div>
-                            <input type="text" class="form-control sop-code" id="Code" placeholder="Enter Code">
+                            <input type="text" class="form-control sop-code" id="Code" placeholder="Enter Code" />
                         </div>
                     </div>
                 </div>
@@ -383,9 +383,21 @@
     <script>
         $(function () {
             LoadData();
+            copySelectedToClipboard();
             var valOldCode = "";
             var valOldName = "";
+            var arr = [];
+            $("#process .Name").focusout(function (e) {
+                var n = $(this).val();
+                $.get("/SOP/Search?name=" + n , function (result) {
+                     if (result.flag == true)
+                            alert("Name exists!");
+                });
+
+            });
+
             $(".select").change(function () {
+
                 var code = $('.sop-code').val();
                 if (code.indexOf($(this).val()) == -1) {
                     let isCharCode = valOldCode == "" ? "" : '-';
@@ -399,8 +411,6 @@
                 }
             });
         });
-
-        //LoadData
         function LoadData() {
             //Load ComponentCategories
             $("#ComponentCategory").append('<option value="" >Choose Component Categories</option>');
@@ -461,12 +471,10 @@
                     //load SOPs
                     $.each(data.SOPs, function (i, obj) {
                         $("#SearchSOP").append('<option class="search-code-sop" value="' + obj.Code + '" >' + obj.Code + '</option>');
-                        CopySOP();
                     });
                     //load SOPs
                     $.each(data.SOPs, function (i, obj) {
                         $("#SearchSOPName").append('<option class="search-name-sop" value="' + obj.Name + '" >' + obj.Name + '</option>');
-                        CopySOP();
                     });
                 },
                 error: function (xhr) {
@@ -474,8 +482,11 @@
                 }
             });
         }
-
-        //Add Data Function
+        function onChangeInput() {
+            var val = '';
+            val = document.getElementById("Name").value;
+            document.getElementById("Code").innerHTML = document.getElementById("Code").innerHTML + val;
+        }
         function Add() {
             var res = validate();
             if (res == false) {
@@ -622,7 +633,7 @@
 
             return isValid;
         }
-        function CopySOP() {
+        function copySelectedToClipboard() {
             $('#SearchSOP').on('change', function (e) {
                 //var value =$("#SearchSOP option:selected").val();
                 copyToClipboard('#SearchSOP option:selected');
@@ -635,17 +646,16 @@
             document.execCommand("copy");
             $temp.remove();
         }
-        function getTextName() {
+        function copyTextInputToClipboard() {
             var copyText = document.getElementById("Name");
             copyText.select();
             document.execCommand("copy");
         }
-        function getTextCode() {
+        function copyValueInputToClipboard() {
             var copyText = document.getElementById("Code");
             copyText.select();
             document.execCommand("copy");
         }
-        //Add Data Function
         function AddProcess() {
             var res = validateProcess();
             if (res == false) {
@@ -800,5 +810,6 @@
                 }
             });
         }
+
     </script>
 }
